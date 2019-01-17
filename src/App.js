@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { TextField, validator } from 'react-textfield';
 import './App.css';
 import axios from 'axios';
 
@@ -7,7 +6,7 @@ import axios from 'axios';
 // npm install --global rollup
 // npm run package
 // npm install electron --save-dev
-// in package json add script 
+// in package json add script
 
 class App extends Component {
 
