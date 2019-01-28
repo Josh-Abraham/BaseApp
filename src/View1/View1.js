@@ -15,10 +15,15 @@ class View1 extends Component {
     }
   }
 
+
+  // _______________________________________________________________________________________________________________
+  // BACK BUTTON
   buttonHit(viewId) {
     this.props.onChange({ viewId: viewId });
   }
 
+  //________________________________________________________________________________________________________________
+  // Title Maker 2 Options
   pageTitle() {
     return (
       <div className="center">
@@ -29,6 +34,9 @@ class View1 extends Component {
       </div>
     );
   }
+
+  // ______________________________________________________________________________________________________________
+  // CHECK BOX MAKER
 
   checkBoxMaker() {
     return (
@@ -49,6 +57,8 @@ class View1 extends Component {
     );
   }
 
+  // ______________________________________________________________________________________________________________________________
+  // Check Box Action Handler
   checkClick(checkType) {
     if (checkType === 'check1') {
       this.setState({ check1: !this.state.check1 });
