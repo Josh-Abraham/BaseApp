@@ -20,6 +20,13 @@
   padding-top: 15px;
 }
 
+.styleCheckBox {
+  transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  margin-right: 5px;
+}
+
 
 @keyframes App-logo-spin {
   from {

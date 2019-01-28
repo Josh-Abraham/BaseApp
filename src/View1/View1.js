@@ -42,13 +42,13 @@ class View1 extends Component {
     return (
     <div className="styleBetween">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="check1" onClick={this.checkClick.bind(this, 'check1')}/>
+        <input class="form-check-input" className="styleCheckBox" type="checkbox" value="" id="check1" onClick={this.checkClick.bind(this, 'check1')}/>
         <label class="form-check-label" for="defaultCheck1">
           Default checkbox
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled onClick={this.checkClick.bind(this, 'check2')}/>
+        <input class="form-check-input" className="styleCheckBox" type="checkbox" value="" id="defaultCheck2" disabled onClick={this.checkClick.bind(this, 'check2')}/>
         <label class="form-check-label" for="defaultCheck2">
           Disabled checkbox
         </label>
@@ -67,6 +67,10 @@ class View1 extends Component {
       this.setState({ check2: !this.state.check2 });
     }
   }
+
+  //______________________________________________________________________________________________________________________________
+  //Radio Button Group
+  
 
   render() {
     const title = this.pageTitle();
