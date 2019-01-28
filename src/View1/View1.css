@@ -1,12 +1,25 @@
 
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 800px;
+}
 
 .buttonStyle {
   width: 120px;
 }
 
+.columnView {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .styleBetween {
   padding-top: 15px;
 }
+
 
 @keyframes App-logo-spin {
   from {
