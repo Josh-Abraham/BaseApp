@@ -11,10 +11,14 @@ class View1 extends Component {
   this.state = {
     title: 'This is a default title',
     check1: false,
-    check2: false
+    check2: false,
+    radioButton: 'radio1'
     }
   }
 
+  componentDidMount() {
+    document.getElementById('defaultCheck2').disabled = true;
+  }
 
   // _______________________________________________________________________________________________________________
   // BACK BUTTON
@@ -48,7 +52,7 @@ class View1 extends Component {
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" className="styleCheckBox" type="checkbox" value="" id="defaultCheck2" disabled onClick={this.checkClick.bind(this, 'check2')}/>
+        <input class="form-check-input" className="styleCheckBox" type="checkbox" value="" id="defaultCheck2" onClick={this.checkClick.bind(this, 'check2')}/>
         <label class="form-check-label" for="defaultCheck2">
           Disabled checkbox
         </label>
@@ -59,6 +63,7 @@ class View1 extends Component {
 
   // ______________________________________________________________________________________________________________________________
   // Check Box Action Handler
+
   checkClick(checkType) {
     if (checkType === 'check1') {
       this.setState({ check1: !this.state.check1 });
@@ -69,12 +74,57 @@ class View1 extends Component {
   }
 
   //______________________________________________________________________________________________________________________________
-  //Radio Button Group
-  
+  //RADIO BUTTON GROUP
+
+  radioGroupMaker() {
+    return (
+      <div className="radioGroupColumn">
+        <div>
+          <input
+            type="radio"
+            name="group1"
+            id="RadioButton1"
+            className="radioGroupElement"
+            onClick={this.radioButtonHit.bind(this, 'radio1')}
+          />
+          <label for="RadioButton1">Option 1</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="group1"
+            id="RadioButton2"
+            className="radioGroupElement"
+            onClick={this.radioButtonHit.bind(this, 'radio2')}
+          />
+          <label for="RadioButton2">Option 2</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="group1"
+            id="RadioButton3"
+            className="radioGroupElement"
+            onClick={this.radioButtonHit.bind(this, 'radio3')}
+          />
+          <label for="RadioButton3">Option 3</label>
+        </div>
+      </div>
+    )
+  }
+
+  //______________________________________________________________________________________________________________________________
+  //Radio button Handler
+
+  radioButtonHit(buttonHit) {
+    this.setState({ radioButton: buttonHit });
+  }
+
 
   render() {
     const title = this.pageTitle();
     const checkBox = this.checkBoxMaker();
+    const radioGroup = this.radioGroupMaker();
 
     return (
       <div>
@@ -87,6 +137,7 @@ class View1 extends Component {
             <Button type="button" className="btn btn-dark" onClick={this.buttonHit.bind(this, 'View 2')}> Go To View 2</Button>
           </div>
             {checkBox}
+            {radioGroup}
         </div>
       </div>
     );
