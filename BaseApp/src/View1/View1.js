@@ -120,11 +120,65 @@ class View1 extends Component {
     this.setState({ radioButton: buttonHit });
   }
 
+  //_____________________________________________________________________________________________________________________________
+  //General Bootstarp Button Set
+  createBootstrapOutlineButton() {
+    return (
+      <div className="columnView">
+        {/* Smol Button */}
+        <div className="styleBetween">
+          <Button type="button" className="btn-outline-success btn-light btn-sm" onClick={this.genericButtonHit.bind(this, 'Small Button')}>
+              Small Bootstrap Button
+          </Button>
+        </div>
+
+        {/* Basic Button */}
+        <div className="styleBetween">
+          <Button type="button" className="btn-outline-info btn-light" onClick={this.genericButtonHit.bind(this, 'Average Button')}>
+              Generic Bootstrap Button
+          </Button>
+        </div>
+
+        {/* Thicc Button */}
+        <div className="styleBetween">
+          <Button type="button" className="btn-outline-danger btn-light btn-lg" onClick={this.genericButtonHit.bind(this, 'Large Button')}>
+              Large Generic Bootstrap Button
+          </Button>
+        </div>
+
+        {/* Blocky Boi Button */}
+        <div className="styleBetween">
+          <Button type="button" className="btn-outline-secondary btn-light btn-block btn-lg" onClick={this.genericButtonHit.bind(this, 'Block Button')}>
+              Block Span Generic Bootstrap Button
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+
+  //_____________________________________________________________________________________________________________________________
+  //General Dom Button Set
+  createDomButtoms() {
+    return (
+      <div className="divButton"  onClick={this.genericButtonHit.bind(this, 'Div Button')}>
+        Div Button
+      </div>
+    );
+  }
+
+  // Base Button Handler
+  genericButtonHit(newTitle) {
+    this.setState({ title: newTitle });
+  }
+
 
   render() {
     const title = this.pageTitle();
     const checkBox = this.checkBoxMaker();
     const radioGroup = this.radioGroupMaker();
+    const genericButton1 = this.createBootstrapOutlineButton();
+    const domButtons = this.createDomButtoms();
 
     return (
       <div>
@@ -138,6 +192,8 @@ class View1 extends Component {
           </div>
             {checkBox}
             {radioGroup}
+            {genericButton1}
+            {domButtons}
         </div>
       </div>
     );
