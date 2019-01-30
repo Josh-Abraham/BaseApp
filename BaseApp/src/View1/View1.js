@@ -161,8 +161,13 @@ class View1 extends Component {
   //General Dom Button Set
   createDomButtoms() {
     return (
-      <div className="divButton"  onClick={this.genericButtonHit.bind(this, 'Div Button')}>
-        Div Button
+      <div>
+        <div className="divButton"  onClick={this.genericButtonHit.bind(this, 'Div Button')}>
+          Div Button
+        </div>
+        <div className="imgButton" onClick={this.genericButtonHit.bind(this, 'Image Button')}>
+          <img src="http://www.pngall.com/wp-content/uploads/2016/05/Click-Here-PNG-HD.png" alt="Blue Button" className="imgInternal"/>
+        </div>
       </div>
     );
   }
