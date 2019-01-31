@@ -172,6 +172,7 @@ class View1 extends Component {
     );
   }
 
+  //_________________________________________________________________________________________________________________________
   // Base Button Handler
   genericButtonHit(newTitle) {
     this.setState({ title: newTitle });
@@ -194,6 +195,8 @@ class View1 extends Component {
             <Button type="button" className="btn btn-dark" onClick={this.buttonHit.bind(this, 'Main')}> Go Back to Main View</Button>
             <div className="styleBetween"/>
             <Button type="button" className="btn btn-dark" onClick={this.buttonHit.bind(this, 'View 2')}> Go To View 2</Button>
+            <div className="styleBetween"/>
+            <Button type="button" className="btn btn-dark" onClick={this.buttonHit.bind(this, 'View 3')}> Go To View 3</Button>
           </div>
             {checkBox}
             {radioGroup}

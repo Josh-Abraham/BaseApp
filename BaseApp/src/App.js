@@ -4,6 +4,7 @@ import { Button } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import View1 from './View1/View1.js';
 import View2 from './View2/View2.js';
+import View3 from './View3/View3.js';
 import axios from 'axios';
 
 // To Package
@@ -73,6 +74,10 @@ componentDidMount() {
       );
     } else if (this.state.viewId === 'View 2') {
       return <View2
+          onChange = {this.onChange.bind(this)}
+      />;
+    } else if (this.state.viewId === 'View 3') {
+      return <View3
           onChange = {this.onChange.bind(this)}
       />;
     }
