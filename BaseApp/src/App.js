@@ -97,7 +97,7 @@ componentDidMount() {
     const mainView = this.getMainView();
 
     return (
-      <div className="test">
+      <div className="main">
         {mainView}
       </div>
     );

@@ -1,0 +1,41 @@
+
+
+.buttonStyle {
+  width: 120px;
+}
+
+.styleBetween {
+  padding-top: 15px;
+}
+
+.textFieldSet {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  justify-content: space-between;
+  padding-top: 15px;
+
+  .textFieldInput {
+    width: 150px;
+    height: 35px;
+    line-height: 10px;
+    border-radius: 2px;
+    border-color: rgb(204, 204, 204);
+    border-width: 0.5px;
+  }
+}
+
+.textFieldButton {
+  height: 35px;
+  line-height: 10px;
+}
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

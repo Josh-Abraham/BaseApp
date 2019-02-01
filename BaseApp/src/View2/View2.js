@@ -3,7 +3,7 @@ import { Button } from 'reactstrap';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import Proptypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './View2.css';
+import './View2.scss';
 
 class View2 extends Component {
 
@@ -13,8 +13,10 @@ class View2 extends Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       dropdownOpen: false,
-      dropDownOption: 'Dropdown'
+      dropDownOption: 'Dropdown',
+      input: 'Default'
     };
+    this.getTextFieldInput = this.getTextFieldInput.bind(this);
   }
 
   buttonHit(viewId) {
@@ -54,9 +56,35 @@ class View2 extends Component {
     this.setState({ dropDownOption: selected });
   }
 
+  // Text Field
+  // ___________________________________________________________________________________
+  createTextField() {
+    return (
+      <div className="textFieldSet">
+        <p>
+         <input type = "text"
+           id = "DefaultTextField"
+           placeholder = " Default Text Field"
+           className="textFieldInput"
+           />
+        </p>
+
+        <Button type="button" className="btn-light textFieldButton" onClick={this.getTextFieldInput}>
+          Save Input
+        </Button>
+      </div>
+    );
+  }
+
+  getTextFieldInput() {
+    const input = document.getElementById('DefaultTextField').value;
+    this.setState({ input: input });
+  }
+
 
   render() {
     const dropDown = this.createDropDown();
+    const textField = this.createTextField();
 
     return (
       <div className="columnView">
@@ -69,6 +97,8 @@ class View2 extends Component {
           <Button type="button" className="btn btn-dark" onClick={this.buttonHit.bind(this, 'View 3')}> Go To View 3</Button>
         </div>
         {dropDown}
+        {textField}
+        {this.state.input}
       </div>
     );
   }
