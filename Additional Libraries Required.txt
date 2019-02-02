@@ -1,0 +1,23 @@
+bootstrap
+
+npm install bootstrap
+
+reactStrap
+
+npm install --save reactstrap react react-dom
+
+
+axios
+
+npm install axios
+
+scss
+npm install node-sass
+
+
+
+FLASK
+pip install Flask
+
+bs4
+pip install beautifulsoup4
