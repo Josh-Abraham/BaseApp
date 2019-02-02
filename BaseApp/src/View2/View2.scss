@@ -30,6 +30,37 @@
   line-height: 10px;
 }
 
+.imageContainer {
+  padding-top: 10px;
+  height: 300px;
+  width: 400px;
+  .imageClass {
+    max-height: 300px;
+    max-width: 400px;
+    object-fit: fill;
+  }
+}
+
+.showMe {
+  background-color: rgba(16, 36, 68, 0.8);
+  position: absolute;
+  bottom: 209px;
+  width: 400px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  height: 0;
+  overflow: hidden;
+  transition: 1.5s ease;
+
+  // Text Style
+  font-weight: 450;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.imageContainer:hover .showMe {
+  height: 20%;
+}
 
 @keyframes App-logo-spin {
   from {

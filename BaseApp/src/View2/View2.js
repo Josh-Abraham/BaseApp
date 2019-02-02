@@ -81,10 +81,25 @@ class View2 extends Component {
     this.setState({ input: input });
   }
 
+  // Create Image Field
+  //____________________________________________________________________________
+  createImage() {
+    return (
+      <div className="imageContainer">
+        <img src="https://static.photocdn.pt/images/articles/2017/04/28/iStock-546424192.jpg"
+          className="imageClass"/>
+          <div className="showMe">
+                Text Overlay
+          </div>
+      </div>
+    );
+  }
+
 
   render() {
     const dropDown = this.createDropDown();
     const textField = this.createTextField();
+    const imageField = this.createImage();
 
     return (
       <div className="columnView">
@@ -99,6 +114,7 @@ class View2 extends Component {
         {dropDown}
         {textField}
         {this.state.input}
+        {imageField}
       </div>
     );
   }
