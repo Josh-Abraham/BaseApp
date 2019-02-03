@@ -14,9 +14,11 @@ class View2 extends Component {
     this.state = {
       dropdownOpen: false,
       dropDownOption: 'Dropdown',
-      input: 'Default'
+      input: 'Default',
+      modalVisible: true
     };
     this.getTextFieldInput = this.getTextFieldInput.bind(this);
+    this.modalExit = this.modalExit.bind(this);
   }
 
   buttonHit(viewId) {
@@ -96,13 +98,45 @@ class View2 extends Component {
   }
 
 
+  // Create Modal with Exit
+  //____________________________________________________________________________
+  createModal() {
+    return (
+    <div className="customModal">
+      <div className="modalContent">
+        <span className="closeAdmin"  onClick={this.modalExit}>&times;</span>
+        <h1 className="title">  Basic Modal </h1>
+      </div>
+    </div>
+  );
+  }
+
+  createModalButton() {
+    return (
+      <div className="styleBetween">
+        <Button type="button" className="btn-outline-dark btn-light" onClick={this.modalExit}>
+            Show Generic Modal
+        </Button>
+      </div>
+    );
+  }
+
+  modalExit() {
+    this.setState( prevState => ({
+      modalVisible: !prevState.modalVisible
+    }));
+  }
+
   render() {
     const dropDown = this.createDropDown();
     const textField = this.createTextField();
     const imageField = this.createImage();
+    const modal = this.state.modalVisible ? this.createModal() : null;
+    const modalButton = this.createModalButton();
 
     return (
       <div className="columnView">
+        {modal}
         <div> THIS IS VIEW 2</div>
         <div className="buttonStyle">
           <Button type="button" className="btn btn-dark" onClick={this.buttonHit.bind(this, 'Main')}> Go Back to Main View</Button>
@@ -115,6 +149,7 @@ class View2 extends Component {
         {textField}
         {this.state.input}
         {imageField}
+        {modalButton}
       </div>
     );
   }
