@@ -97,6 +97,28 @@
   }
 }
 
+// Table Styling
+
+.tableContainer {
+  width: 200px;
+  text-align: center;
+  margin-bottom: 20px;
+  .tableTitle {
+   border: 1.5px solid black;
+   font-weight: 500;
+  }
+  .tableElements {
+    overflow: scroll;
+    height: 200px;
+    .tableElement {
+        border: 0.5px solid rgb(121, 121, 121);
+    }
+    .tableElement:nth-child(odd) {
+      background: rgba(57, 4, 102, 0.2);
+    }
+  }
+}
+
 
 @keyframes App-logo-spin {
   from {

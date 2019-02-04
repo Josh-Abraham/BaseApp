@@ -15,7 +15,8 @@ class View2 extends Component {
       dropdownOpen: false,
       dropDownOption: 'Dropdown',
       input: 'Default',
-      modalVisible: true
+      modalVisible: true,
+      totalItems: ['a', 'b', 'c', 'd', 'e', 'f', 'abc', 'efg', 'aei', 'bc', 'abcd', 'ab', 'cde', 'fgh', 'g', 'h', 'cd', 'cba']
     };
     this.getTextFieldInput = this.getTextFieldInput.bind(this);
     this.modalExit = this.modalExit.bind(this);
@@ -127,12 +128,39 @@ class View2 extends Component {
     }));
   }
 
+  // List Creation
+  //____________________________________________________________________________________
+  createListOfItems() {
+      const elements = this.state.totalItems.map((element) => this.createListElement(element));
+      return (
+        <div className="styleBetween">
+          <div className="tableContainer">
+              <div className="tableTitle">
+                <span>List Elements</span>
+              </div>
+              <div className="tableElements">
+                {elements}
+              </div>
+          </div>
+        </div>
+      );
+  }
+
+  createListElement(element) {
+    return (
+        <div className="tableElement" key={element}>
+          <span>{element}</span>
+        </div>
+    );
+  }
+
   render() {
     const dropDown = this.createDropDown();
     const textField = this.createTextField();
     const imageField = this.createImage();
     const modal = this.state.modalVisible ? this.createModal() : null;
     const modalButton = this.createModalButton();
+    const list = this.createListOfItems();
 
     return (
       <div className="columnView">
@@ -150,6 +178,7 @@ class View2 extends Component {
         {this.state.input}
         {imageField}
         {modalButton}
+        {list}
       </div>
     );
   }
