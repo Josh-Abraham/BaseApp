@@ -16,10 +16,16 @@ class View2 extends Component {
       dropDownOption: 'Dropdown',
       input: 'Default',
       modalVisible: true,
-      totalItems: ['a', 'b', 'c', 'd', 'e', 'f', 'abc', 'efg', 'aei', 'bc', 'abcd', 'ab', 'cde', 'fgh', 'g', 'h', 'cd', 'cba']
+      totalItems: ['a', 'b', 'c', 'd', 'e', 'f', 'abc', 'efg', 'aei', 'bc', 'abcd', 'ab', 'cde', 'fgh', 'g', 'h', 'cd', 'cba', 'z'],
+      searchedItems : []
     };
     this.getTextFieldInput = this.getTextFieldInput.bind(this);
     this.modalExit = this.modalExit.bind(this);
+    this.captureSearch = this.captureSearch.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({ searchedItems: this.state.totalItems });
   }
 
   buttonHit(viewId) {
@@ -131,9 +137,8 @@ class View2 extends Component {
   // List Creation
   //____________________________________________________________________________________
   createListOfItems() {
-      const elements = this.state.totalItems.map((element) => this.createListElement(element));
+      const elements = this.state.searchedItems.map((element) => this.createListElement(element));
       return (
-        <div className="styleBetween">
           <div className="tableContainer">
               <div className="tableTitle">
                 <span>List Elements</span>
@@ -142,7 +147,6 @@ class View2 extends Component {
                 {elements}
               </div>
           </div>
-        </div>
       );
   }
 
@@ -154,12 +158,53 @@ class View2 extends Component {
     );
   }
 
+  // Search Bar Creator
+  // ________________________________________________________________________________
+  createSearchBar() {
+    return(
+      <div className="styleBetween">
+        <div className="styleCentre">
+             <input type = "text"
+               id = "Search"
+               placeholder = "Search"
+               className="styleSearch"
+               onChange={this.captureSearch}
+               />
+              <img src="https://thakshashila.com/content/images/2017/12/unnamed.png" className="imageSearch" onClick={this.captureSearch}/>
+        </div>
+      </div>
+    );
+  }
+
+  captureSearch() {
+    const input = document.getElementById('Search').value;
+    const inputSplit = input.split("");
+    let searchResult = [];
+    if (inputSplit.length > 0) {
+      this.state.totalItems.forEach((element) => {
+        for (let i = 0; i < inputSplit.length; i++) {
+          if (i === inputSplit.length - 1 && element.indexOf(inputSplit[i]) !== -1) {
+            searchResult.push(element);
+          } else if (element.indexOf(inputSplit[i]) === -1) {
+            break;
+          }
+        }
+      });
+    } else {
+      searchResult = this.state.totalItems;
+    }
+
+    this.setState({ searchedItems: searchResult });
+  }
+
+
   render() {
     const dropDown = this.createDropDown();
     const textField = this.createTextField();
     const imageField = this.createImage();
     const modal = this.state.modalVisible ? this.createModal() : null;
     const modalButton = this.createModalButton();
+    const searchBar = this.createSearchBar();
     const list = this.createListOfItems();
 
     return (
@@ -178,6 +223,7 @@ class View2 extends Component {
         {this.state.input}
         {imageField}
         {modalButton}
+        {searchBar}
         {list}
       </div>
     );
