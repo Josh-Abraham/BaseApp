@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button } from 'reactstrap';
 import Proptypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './View1.css';
+import './View1.scss';
 
 class View1 extends Component {
 
@@ -31,10 +31,10 @@ class View1 extends Component {
   pageTitle() {
     return (
       <div className="center">
-      <div class="jumbotron">
-        <h1 class="display-4">{this.state.title}</h1>
+      <div className="jumbotron">
+        <h1 className="display-4">{this.state.title}</h1>
       </div>
-        <h1><span class="badge badge-pill badge-dark">{this.state.title}</span></h1>
+        <h1><span className="badge badge-pill badge-dark">{this.state.title}</span></h1>
       </div>
     );
   }
@@ -45,15 +45,15 @@ class View1 extends Component {
   checkBoxMaker() {
     return (
     <div className="styleBetween">
-      <div class="form-check">
+      <div className="form-check">
         <input class="form-check-input" className="styleCheckBox" type="checkbox" value="" id="check1" onClick={this.checkClick.bind(this, 'check1')}/>
-        <label class="form-check-label" for="defaultCheck1">
+        <label className="form-check-label" for="defaultCheck1">
           Default checkbox
         </label>
       </div>
-      <div class="form-check">
+      <div className="form-check">
         <input class="form-check-input" className="styleCheckBox" type="checkbox" value="" id="defaultCheck2" onClick={this.checkClick.bind(this, 'check2')}/>
-        <label class="form-check-label" for="defaultCheck2">
+        <label className="form-check-label" for="defaultCheck2">
           Disabled checkbox
         </label>
       </div>

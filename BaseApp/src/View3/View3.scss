@@ -1,0 +1,113 @@
+
+
+.buttonStyle {
+  width: 120px;
+}
+
+.styleBetween {
+  padding-top: 15px;
+
+  .panelButtons {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+// Left Panel With Sliding
+
+.leftPanelOpening {
+  z-index: 1;
+  width: 350px;
+  height: 100vh;
+  background-color: rgb(204, 204, 204);
+  position: fixed;
+  top: 0;
+  left: -350px;
+  animation: slideInLeft 0.5s forwards;
+  animation-delay: 0s;
+}
+
+@-webkit-keyframes slideInLeft {
+    100% { left: 0; }
+}
+
+.leftPanelClosing {
+  z-index: 1;
+  width: 350px;
+  height: 100vh;
+  background-color: rgb(204, 204, 204);
+  position: fixed;
+  top: 0;
+  left: 0px;
+  animation: slideOutLeft 0.5s forwards;
+  animation-delay: 0s;
+}
+
+@-webkit-keyframes slideOutLeft {
+    100% { left: -350px; }
+}
+
+
+// Right Panel
+.rightPanelOpening {
+  overflow: auto;
+  z-index: 1;
+  width: 350px;
+  height: 100vh;
+  background-color: rgb(204, 204, 204);
+  position: fixed;
+  top: 0;
+  right: -350px;
+  animation: slideInRight 0.5s forwards;
+  animation-delay: 0s;
+}
+
+@-webkit-keyframes slideInRight {
+    100% { right: 0; }
+}
+
+.rightPanelClosing {
+  overflow: auto;
+  z-index: 1;
+  width: 350px;
+  height: 100vh;
+  background-color: rgb(204, 204, 204);
+  position: fixed;
+  top: 0;
+  right: 0px;
+  animation: slideOutRight 0.5s forwards;
+  animation-delay: 0s;
+}
+
+@-webkit-keyframes slideOutRight {
+    100% { right: -350px; }
+}
+
+.panelTitle {
+    text-align: center;
+    font-weight: 600;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.panelContent {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-weight: 400;
+  font-size: 1.1em;
+
+  .panelImage {
+    max-width: 330px;
+    object-fit: fill;
+    margin-bottom: 10px;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

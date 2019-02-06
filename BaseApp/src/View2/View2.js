@@ -17,7 +17,8 @@ class View2 extends Component {
       input: 'Default',
       modalVisible: true,
       totalItems: ['a', 'b', 'c', 'd', 'e', 'f', 'abc', 'efg', 'aei', 'bc', 'abcd', 'ab', 'cde', 'fgh', 'g', 'h', 'cd', 'cba', 'z'],
-      searchedItems : []
+      searchedItems : [],
+      selectedItem: ''
     };
     this.getTextFieldInput = this.getTextFieldInput.bind(this);
     this.modalExit = this.modalExit.bind(this);
@@ -152,7 +153,7 @@ class View2 extends Component {
 
   createListElement(element) {
     return (
-        <div className="tableElement" key={element}>
+        <div className="tableElement" key={element} onClick={this.changeSelected.bind(this, element)}>
           <span>{element}</span>
         </div>
     );
@@ -197,6 +198,22 @@ class View2 extends Component {
     this.setState({ searchedItems: searchResult });
   }
 
+  // Search Selected items
+  // ___________________________________________________________________________________________
+  getSelectedItem() {
+    return (
+        <div className="styleCentre">
+            <span className="styleSelected">
+              {`Selected Item: ${this.state.selectedItem}`}
+            </span>
+        </div>
+    );
+  }
+
+  changeSelected(element) {
+    this.setState({ selectedItem: element });
+  }
+
 
   render() {
     const dropDown = this.createDropDown();
@@ -206,6 +223,7 @@ class View2 extends Component {
     const modalButton = this.createModalButton();
     const searchBar = this.createSearchBar();
     const list = this.createListOfItems();
+    const selectedItem = this.getSelectedItem();
 
     return (
       <div className="columnView">
@@ -225,6 +243,7 @@ class View2 extends Component {
         {modalButton}
         {searchBar}
         {list}
+        {selectedItem}
       </div>
     );
   }
