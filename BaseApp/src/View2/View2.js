@@ -4,6 +4,7 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap
 import Proptypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './View2.scss';
+import axios from 'axios';
 
 class View2 extends Component {
 
@@ -23,6 +24,7 @@ class View2 extends Component {
     this.getTextFieldInput = this.getTextFieldInput.bind(this);
     this.modalExit = this.modalExit.bind(this);
     this.captureSearch = this.captureSearch.bind(this);
+    this.saveButton = this.saveButton.bind(this);
   }
 
   componentDidMount() {
@@ -214,6 +216,19 @@ class View2 extends Component {
     this.setState({ selectedItem: element });
   }
 
+  // Logic For Backend Save
+  saveButton() {
+    const data = {
+     viewId: 'View 2',
+     dropDownOption: this.state.dropDownOption,
+     input: this.state.input,
+     selectedItem: this.state.selectedItem,
+   }
+     axios.post('http://localhost:5000/save', data)
+        .then(res => {
+          this.props.onChange({ viewId: 'Main' });
+        });
+  }
 
   render() {
     const dropDown = this.createDropDown();
@@ -244,6 +259,7 @@ class View2 extends Component {
         {searchBar}
         {list}
         {selectedItem}
+        <Button type="button" className="btn btn-dark" onClick={this.saveButton}> Save View Information</Button>
       </div>
     );
   }

@@ -3,6 +3,7 @@ import { Button } from 'reactstrap';
 import Proptypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './View3.scss';
+import axios from 'axios';
 
 class View3 extends Component {
 
@@ -13,6 +14,7 @@ class View3 extends Component {
     right: false,
     opacity: 0
     }
+    this.saveButton = this.saveButton.bind(this);
   }
 
   componentDidMount() {
@@ -97,6 +99,21 @@ class View3 extends Component {
   }
 
 
+  // Logic For Backend Save
+  //____________________________________________________________________________
+  saveButton() {
+    const data = {
+     viewId: 'View 3',
+     leftPanel: this.state.left,
+     rightPanel: this.state.right
+   }
+     axios.post('http://localhost:5000/save', data)
+        .then(res => {
+          this.props.onChange({ viewId: 'Main' });
+        });
+  }
+
+
 
   render() {
     const leftPanelButton = this.getButton('left', 'btn-outline-primary');
@@ -120,6 +137,8 @@ class View3 extends Component {
               {rightPanelButton}
             </div>
           </div>
+            <div className="styleBetween"/>
+          <Button type="button" className="btn btn-dark" onClick={this.saveButton}> Save View Information</Button>
         </div>
             {leftPanel}
             {rightPanel}

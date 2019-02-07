@@ -3,6 +3,7 @@ import { Button } from 'reactstrap';
 import Proptypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './View1.scss';
+import axios from 'axios';
 
 class View1 extends Component {
 
@@ -14,6 +15,7 @@ class View1 extends Component {
     check2: false,
     radioButton: 'radio1'
     }
+    this.saveButton = this.saveButton.bind(this);
   }
 
   componentDidMount() {
@@ -179,6 +181,21 @@ class View1 extends Component {
   }
 
 
+  // Logic For Backend Save
+  saveButton() {
+    const data = {
+     viewId: 'View 1',
+     title: this.state.title,
+     check1: this.state.check1,
+     check2: this.state.check2,
+     radioButton: this.state.radioButton
+   }
+     axios.post('http://localhost:5000/save', data)
+        .then(res => {
+          this.props.onChange({ viewId: 'Main' });
+        });
+  }
+
   render() {
     const title = this.pageTitle();
     const checkBox = this.checkBoxMaker();
@@ -202,6 +219,7 @@ class View1 extends Component {
             {radioGroup}
             {genericButton1}
             {domButtons}
+            <Button type="button" className="btn btn-dark" onClick={this.saveButton}> Save View Information</Button>
         </div>
       </div>
     );

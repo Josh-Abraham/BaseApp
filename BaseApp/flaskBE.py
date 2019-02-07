@@ -23,8 +23,8 @@ def home():
 
 
 # WEB PARSING
-@app.route("/save", methods=['GET', 'POST'])     #GET REQUEST, now we can do saving
-def save():
+@app.route("/cmd", methods=['GET', 'POST'])     #GET REQUEST, now we can do saving
+def cmd():
     content = request.get_json()
     ticker = content['name']
     quote_page = 'https://finance.yahoo.com/quote/'+ticker+'/history?period1=1544677200&period2=1547355600&interval=1d&filter=history&frequency=1d'
@@ -47,13 +47,34 @@ def save():
 
 
 #File Saving Example
-@app.route("/cmd", methods=['GET', 'POST'])     #GET REQUEST, now we can do saving
-def cmd():
+@app.route("/save", methods=['GET', 'POST'])     #GET REQUEST, now we can do saving
+def save():
     content = request.get_json()
-    cmd = content['data']
-    f= open("BuyOrSell.txt","a+")
-    f.write(cmd + '\n')
-    f.close()
+    viewId = content['viewId'];
+    if (viewId == 'View 1'):
+        f= open("View 1.txt","w+")
+        f.write('View 1\n')
+        f.write('Title: ' + content['title'] + '\n')
+        f.write('Checkbox 1 selected: ' + str(content['check1']) + '\n')
+        f.write('Checkbox 2 selected: ' + str(content['check1'] and content['check2']) + '\n')
+    elif (viewId == 'View 2'):
+        f= open("View 2.txt","w+")
+        f.write('View 2\n')
+        f.write('Drop Down Option: ' + content['dropDownOption'] + '\n')
+        f.write('Input: ' + content['input'] + '\n')
+        f.write('Selected Item: ' + content['selectedItem'] + '\n')
+    elif (viewId == 'View 3'):
+        f= open("View 3.txt","w+")
+        f.write('View 3\n')
+        if (content['leftPanel'] and content['rightPanel']):
+            f.write('Both panels are currently visible\n')
+        elif ( content['leftPanel']):
+            f.write('The left Panel is currently hidden\n')
+        elif ( content['righttPanel']):
+            f.write('The right Panel is currently visible\n')
+        else:
+            f.write('No panels are currently open\n')
+
     return jsonify(info='Success')
 
 if __name__ == '__main__':
