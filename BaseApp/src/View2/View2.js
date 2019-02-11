@@ -93,6 +93,34 @@ class View2 extends Component {
     this.setState({ input: input });
   }
 
+
+  // BLUR textField
+  createBlurField(label) {
+    const id = label.replace(/\s/g, '');
+
+    return (
+      <div className="textFieldBlur">
+          <legend>{`${label}:`}</legend>
+        <p>
+         <input type = "text"
+           id = {id}
+           placeholder = "Enter Here"
+           className="textFieldInput"
+           onBlur={this.getBlurFieldInput.bind(this, id)}
+           />
+        </p>
+      </div>
+    );
+  }
+
+  getBlurFieldInput(label) {
+   const input = document.getElementById(label);
+    if ( input !== null ) {
+      this.setState({ [label]: input.value });
+    }
+  }
+
+
   // Create Image Field
   //____________________________________________________________________________
   createImage() {

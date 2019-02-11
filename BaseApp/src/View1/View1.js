@@ -13,7 +13,7 @@ class View1 extends Component {
     title: 'This is a default title',
     check1: false,
     check2: false,
-    radioButton: 'radio1'
+    radioButton: ''
     }
     this.saveButton = this.saveButton.bind(this);
   }
@@ -75,42 +75,57 @@ class View1 extends Component {
     }
   }
 
+  // CHECK BOX With Inputs
+  // ______________________________________________________________________________________________________________
+
+  checkBoxMaker2(inputField, title ,label) {
+    return (
+    <div className="styleBetween">
+    <h2>
+      <div className="textHeader">{title}</div>
+    </h2>
+      <div className="form-check">
+        <input class="form-check-input" className="styleCheckBox" type="checkbox" value="" id="check1" onClick={this.checkClick2.bind(this, inputField)}/>
+        <label className="form-check-label" for="defaultCheck1">
+          {label}
+        </label>
+      </div>
+    </div>
+    );
+  }
+
+  // ______________________________________________________________________________________________________________________________
+  // Check Box Action Handler
+
+  checkClick2(inputField) {
+    this.setState({ [inputField]: !this.state[inputField]});
+  }
+
+
   //______________________________________________________________________________________________________________________________
   //RADIO BUTTON GROUP
 
-  radioGroupMaker() {
+  radioGroupMaker(elements,title, group) {
+    const groupButtons = elements.map((element) => {
+        return (
+          <div>
+            <input
+              type="radio"
+              name={group}
+              id={element.id}
+              className="radioGroupElement"
+              onClick={this.radioButtonHit.bind(this, group, element.id)}
+            />
+            <label for={element.id}>{element.label}</label>
+          </div>
+        );
+    });
     return (
       <div className="radioGroupColumn">
-        <div>
-          <input
-            type="radio"
-            name="group1"
-            id="RadioButton1"
-            className="radioGroupElement"
-            onClick={this.radioButtonHit.bind(this, 'radio1')}
-          />
-          <label for="RadioButton1">Option 1</label>
-        </div>
-        <div>
-          <input
-            type="radio"
-            name="group1"
-            id="RadioButton2"
-            className="radioGroupElement"
-            onClick={this.radioButtonHit.bind(this, 'radio2')}
-          />
-          <label for="RadioButton2">Option 2</label>
-        </div>
-        <div>
-          <input
-            type="radio"
-            name="group1"
-            id="RadioButton3"
-            className="radioGroupElement"
-            onClick={this.radioButtonHit.bind(this, 'radio3')}
-          />
-          <label for="RadioButton3">Option 3</label>
-        </div>
+      <h2>
+        <div className="textHeader">{title}</div>
+      </h2>
+        {groupButtons}
       </div>
     )
   }
@@ -118,8 +133,8 @@ class View1 extends Component {
   //______________________________________________________________________________________________________________________________
   //Radio button Handler
 
-  radioButtonHit(buttonHit) {
-    this.setState({ radioButton: buttonHit });
+  radioButtonHit(group, buttonHit) {
+    this.setState({ [group]: buttonHit });
   }
 
   //_____________________________________________________________________________________________________________________________
@@ -199,7 +214,21 @@ class View1 extends Component {
   render() {
     const title = this.pageTitle();
     const checkBox = this.checkBoxMaker();
-    const radioGroup = this.radioGroupMaker();
+    const radioContent =  [
+      {
+        id: 'option1',
+        label: 'Option 1'
+      },
+      {
+        id: 'option2',
+        label: 'Option 2'
+      },
+      {
+        id: 'option3',
+        label: 'Option 3'
+      }
+    ];
+    const radioGroup = this.radioGroupMaker(radioContent, 'Basic Radio Group','radioButton');
     const genericButton1 = this.createBootstrapOutlineButton();
     const domButtons = this.createDomButtoms();
 
