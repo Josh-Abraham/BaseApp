@@ -78,14 +78,20 @@ class View1 extends Component {
   // CHECK BOX With Inputs
   // ______________________________________________________________________________________________________________
 
-  checkBoxMaker2(inputField, title ,label) {
+  checkBoxMaker(inputField, title ,label) {
+    let titleElement = null;
+    if (title !== '') {
+      titleElement = (
+        <h2>
+          <div className="textHeader">{title}</div>
+        </h2>
+      );
+    }
     return (
-    <div className="styleBetween">
-    <h2>
-      <div className="textHeader">{title}</div>
-    </h2>
+    <div>
+      {titleElement}
       <div className="form-check">
-        <input class="form-check-input" className="styleCheckBox" type="checkbox" value="" id="check1" onClick={this.checkClick2.bind(this, inputField)}/>
+        <input class="form-check-input" className="styleCheckBox" type="checkbox" value="" id="check1" onClick={this.checkClick.bind(this, inputField)}/>
         <label className="form-check-label" for="defaultCheck1">
           {label}
         </label>
