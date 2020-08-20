@@ -1,4 +1,0 @@
-View 1
-Title: Average Button
-Checkbox 1 selected: True
-Checkbox 2 selected: True
